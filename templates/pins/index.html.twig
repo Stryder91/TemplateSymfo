@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+   <head>
+        <meta charset="UTF-8">
+        <title>Painterest clone </title>
+    </head>
+    <body>
+
+    <h1>Pins</h1>
+    <a href="{{ path('app_pins_create')}}">{{ 'Create pin' | upper }}</a>
+    {% set pins_count = pins | length %}
+    <p> On a {{ pins_count }} pin </p>
+
+    {% if pins_count > 0 %}  
+      {% for pin in pins%}
+      <article>
+        <h6> <a href="{{ path('app_pins_show', {id: pin.id})}}">{{ pin.title }} </a></h6>
+        <p> {{ pin.description }}
+      </article>
+      {% endfor %}
+    {% else %}
+      <p>No pins yet!</p>
+    {% endif %}
+
+    </body>
+</html>
